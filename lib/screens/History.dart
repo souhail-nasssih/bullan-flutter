@@ -1,5 +1,5 @@
-import 'package:bullan/utils/CustomAppBar.dart';
-import 'package:bullan/widgets/AddItemsCategorie.dart';
+import 'package:bullan/services/TransactionService.dart';
+import 'package:bullan/widgets/TransactionHistoryPage.dart';
 import 'package:flutter/material.dart';
 
 class History extends StatefulWidget {
@@ -11,6 +11,8 @@ class History extends StatefulWidget {
 
 class _HistoryState extends State<History> with SingleTickerProviderStateMixin {
   late TabController _tabController;
+
+  final service = TransactionService();
 
   @override
   void initState() {
@@ -27,44 +29,54 @@ class _HistoryState extends State<History> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Historique des transactions'),
-      body: Column(
-        children: [
-          Container(
-            color: Colors.white,
-            child: TabBar(
-              controller: _tabController,
-              labelColor: Color(0xFF6D0EB5),
-              unselectedLabelColor: Colors.grey,
-              indicatorColor: Color(0xFF6D0EB5),
-              indicatorWeight: 3,
-              tabs: const [
-                Tab(text: 'Tous'),
-                Tab(text: 'Dépenses'),
-                Tab(text: 'Recettes'),
-              ],
+      appBar: AppBar(
+        title: Text(
+          'Historiques',
+          style: const TextStyle(color: Colors.white),
+        ),
+        iconTheme: const IconThemeData(
+          color: Colors.white, // Icône de retour blanche
+        ),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFF6D0EB5),
+                Color(0xFF4059F1)
+              ], // Violet vers bleu
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
           ),
-          Expanded(
-            child: TabBarView(
-              controller: _tabController,
-              children: [
-                _buildHistoryPage('Tous les historiques'),
-                _buildHistoryPage('Historique des dépenses'),
-                _buildHistoryPage('Historique des recettes'),
-              ],
+        ),
+        bottom: TabBar(
+          controller: _tabController,
+          labelColor: Color.fromARGB(255, 28, 2, 48),
+          unselectedLabelColor: Colors.white,
+          indicatorColor: Color.fromARGB(255, 88, 11, 148),
+          indicatorWeight: 3,
+          tabs: const [
+            Tab(
+              text: 'Tous',
             ),
+            Tab(text: 'Dépenses'),
+            Tab(text: 'Recettes'),
+          ],
+        ),
+      ),
+      body: TabBarView(
+        controller: _tabController,
+        children: [
+          TransactionHistoryPage(
+            stream: service.getAllTransactions(),
+          ),
+          TransactionHistoryPage(
+            stream: service.getExpenses(),
+          ),
+          TransactionHistoryPage(
+            stream: service.getIncome(),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildHistoryPage(String title) {
-    return Center(
-      child: Text(
-        title,
-        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
       ),
     );
   }

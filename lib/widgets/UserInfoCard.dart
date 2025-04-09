@@ -14,46 +14,49 @@ class UserInfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(30),
-      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.all(20),
+      margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(20), // Coins arrondis plus larges
         gradient: const LinearGradient(
-          colors: [Color(0xFF4059F1), Color(0xFF6D0EB5)],
+          colors: [Color(0xFF6D0EB5), Color(0xFF4059F1)], // Dégradé vibrant
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         boxShadow: const [
           BoxShadow(
-            color: Colors.black26,
-            blurRadius: 10,
+            color: Colors.black12,
+            blurRadius: 12,
             offset: Offset(0, 4),
           ),
         ],
       ),
       child: Row(
         children: [
+          // Avatar simple, rond et bien stylisé
           const CircleAvatar(
-            radius: 30,
+            radius: 35,
             backgroundColor: Colors.white24,
-            child: Icon(Icons.person, color: Colors.white, size: 30),
+            child: const Icon(Icons.person, color: Colors.white, size: 35),
           ),
-          const SizedBox(width: 16),
+          const SizedBox(width: 20),
+          // Colonne pour le nom et l'email
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 name,
                 style: const TextStyle(
-                    fontSize: 18,
+                    fontSize: 22, // Taille de police plus grande pour le nom
                     color: Colors.white,
-                    fontWeight: FontWeight.bold),
+                    fontWeight: FontWeight.w600),
               ),
-              const SizedBox(height: 4),
+              const SizedBox(
+                  height: 6), // Un peu plus d'espace entre le nom et l'email
               Text(
                 email,
                 style: const TextStyle(
-                    fontSize: 14,
+                    fontSize: 16, // Taille de police plus petite pour l'email
                     color: Colors.white70,
                     fontWeight: FontWeight.w400),
               ),

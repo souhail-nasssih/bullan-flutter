@@ -1,6 +1,7 @@
+import 'package:bullan/screens/AddCategorie.dart';
 import 'package:bullan/screens/AddTransaction.dart';
-import 'package:bullan/screens/Addcategorie.dart';
 import 'package:bullan/screens/History.dart';
+import 'package:bullan/services/TransactionService.dart'; // Importer le service
 import 'package:bullan/widgets/AddItemsCategorie.dart';
 import 'package:bullan/widgets/HomeMenuCard.dart';
 import 'package:bullan/widgets/UserInfoCard.dart';
@@ -46,19 +47,36 @@ class _HomeState extends State<Home> {
       // Body centralisé avec beaux widgets
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        // Remplace le Column dans le body par ceci :
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const UserInfoCard(
-                  name: 'Jean Dupont',
-                  email: 'jean.dupont@email.com',
+                  name: 'NASSIH SOUHAIL',
+                  email: 'nassihsouhail@email.com',
                 ),
                 const SizedBox(height: 12),
-                const BalanceCard(
-                    label: 'Votre solde', balance: '250 000 FCFA'),
+                // StreamBuilder pour écouter le solde en temps réel
+                StreamBuilder<double>(
+                  stream: TransactionService().getSoldeStream(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const CircularProgressIndicator();
+                    } else if (snapshot.hasError) {
+                      return Text("Erreur: ${snapshot.error}");
+                    } else if (!snapshot.hasData) {
+                      return const Text("Solde indisponible");
+                    } else {
+                      double balance = snapshot.data!;
+                      return BalanceCard(
+                        label: 'Votre solde',
+                        balance:
+                            '${balance.toStringAsFixed(2)} MAD', // Afficher le solde
+                      );
+                    }
+                  },
+                ),
                 const SizedBox(height: 24),
                 HomeMenuCard(
                   icon: Icons.category,
@@ -73,16 +91,17 @@ class _HomeState extends State<Home> {
                   },
                 ),
                 HomeMenuCard(
-                    icon: Icons.add_circle,
-                    label: 'Transaction',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AddTransaction(),
-                        ),
-                      );
-                    }),
+                  icon: Icons.add_circle,
+                  label: 'Transaction',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AddTransaction(),
+                      ),
+                    );
+                  },
+                ),
                 const SizedBox(height: 16),
                 HomeMenuCard(
                   icon: Icons.history,
