@@ -23,8 +23,8 @@ class _AddTransactionState extends State<AddTransaction> {
   List<Category> _categories = [];
   bool _isLoading = true;
 
-  String? _selectedCategory; // ID de la catégorie sélectionnée
-  String? _transactionType; // 'recette' ou 'dépense'
+  String? _selectedCategory; 
+  String? _transactionType; 
 
   @override
   void initState() {

@@ -4,7 +4,7 @@ import 'package:bullan/models/TransactionModel.dart';
 class TransactionHistoryPage extends StatelessWidget {
   final Stream<List<TransactionModel>> stream;
 
-  const TransactionHistoryPage({
+  const TransactionHistoryPage({super.key, 
     required this.stream,
   });
 
@@ -18,7 +18,7 @@ class TransactionHistoryPage extends StatelessWidget {
         } else if (snapshot.hasError) {
           return Center(child: Text('Erreur: ${snapshot.error}'));
         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-          return Center(child: Text('Aucune transaction trouvée.'));
+          return const Center(child: Text('Aucune transaction trouvée.'));
         } else {
           List<TransactionModel> transactions = snapshot.data!;
           return ListView.builder(

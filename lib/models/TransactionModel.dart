@@ -4,7 +4,7 @@ class TransactionModel {
   final String id;
   final String title;
   final double prix;
-  final String type; // 'dépense' ou 'recette'
+  final String type;
   final DateTime date;
 
   TransactionModel({

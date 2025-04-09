@@ -13,15 +13,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         style: const TextStyle(color: Colors.white),
       ),
       iconTheme: const IconThemeData(
-        color: Colors.white, // Icône de retour blanche
-      ),
+        color: Colors.white,      ),
       flexibleSpace: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
               Color(0xFF6D0EB5),
               Color(0xFF4059F1)
-            ], // Violet vers bleu
+            ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),

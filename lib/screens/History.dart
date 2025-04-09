@@ -35,7 +35,7 @@ class _HistoryState extends State<History> with SingleTickerProviderStateMixin {
           style: const TextStyle(color: Colors.white),
         ),
         iconTheme: const IconThemeData(
-          color: Colors.white, // Icône de retour blanche
+          color: Colors.white,
         ),
         flexibleSpace: Container(
           decoration: const BoxDecoration(

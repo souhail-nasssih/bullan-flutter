@@ -1,7 +1,7 @@
 class Category {
-  final String id; // L'identifiant unique de la catégorie
-  final String name; // Le nom de la catégorie
-  final String description; // La description de la catégorie
+  final String id; 
+  final String name; 
+  final String description; 
 
   // Constructeur de la classe Category
   Category({
@@ -22,9 +22,9 @@ class Category {
   // Méthode pour créer un objet Category à partir d'un Map
   factory Category.fromMap(Map<String, dynamic> map) {
     return Category(
-      id: map['id'] ?? '', // Si 'id' est null, on renvoie une chaîne vide
-      name: map['name'] ?? '', // Si 'name' est null, on renvoie une chaîne vide
-      description: map['description'] ?? '', // Si 'description' est null, on renvoie une chaîne vide
+      id: map['id'] ?? '', 
+      name: map['name'] ?? '',
+      description: map['description'] ?? '', 
     );
   }
 }

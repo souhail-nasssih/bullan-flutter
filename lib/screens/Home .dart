@@ -1,7 +1,7 @@
 import 'package:bullan/screens/AddCategorie.dart';
 import 'package:bullan/screens/AddTransaction.dart';
 import 'package:bullan/screens/History.dart';
-import 'package:bullan/services/TransactionService.dart'; // Importer le service
+import 'package:bullan/services/TransactionService.dart';
 import 'package:bullan/widgets/AddItemsCategorie.dart';
 import 'package:bullan/widgets/HomeMenuCard.dart';
 import 'package:bullan/widgets/UserInfoCard.dart';
@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
                 colors: [
                   Color(0xFF6D0EB5),
                   Color(0xFF4059F1)
-                ], // Violet vers bleu
+                ], 
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
@@ -72,7 +72,7 @@ class _HomeState extends State<Home> {
                       return BalanceCard(
                         label: 'Votre solde',
                         balance:
-                            '${balance.toStringAsFixed(2)} MAD', // Afficher le solde
+                            '${balance.toStringAsFixed(2)} MAD', 
                       );
                     }
                   },

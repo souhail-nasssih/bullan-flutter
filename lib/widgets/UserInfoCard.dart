@@ -17,9 +17,9 @@ class UserInfoCard extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20), // Coins arrondis plus larges
+        borderRadius: BorderRadius.circular(20), 
         gradient: const LinearGradient(
-          colors: [Color(0xFF6D0EB5), Color(0xFF4059F1)], // Dégradé vibrant
+          colors: [Color(0xFF6D0EB5), Color(0xFF4059F1)], 
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -47,16 +47,16 @@ class UserInfoCard extends StatelessWidget {
               Text(
                 name,
                 style: const TextStyle(
-                    fontSize: 22, // Taille de police plus grande pour le nom
+                    fontSize: 22,
                     color: Colors.white,
                     fontWeight: FontWeight.w600),
               ),
               const SizedBox(
-                  height: 6), // Un peu plus d'espace entre le nom et l'email
+                  height: 6), 
               Text(
                 email,
                 style: const TextStyle(
-                    fontSize: 16, // Taille de police plus petite pour l'email
+                    fontSize: 16, 
                     color: Colors.white70,
                     fontWeight: FontWeight.w400),
               ),
