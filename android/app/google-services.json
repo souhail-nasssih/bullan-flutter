@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "328260367659",
+    "project_id": "bullan-de4de",
+    "storage_bucket": "bullan-de4de.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328260367659:android:114525a5e91ac70486816e",
+        "android_client_info": {
+          "package_name": "com.example.bullan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgaQN9Sb1v0zTgZP1k3kKKxX8SJiqpz_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
