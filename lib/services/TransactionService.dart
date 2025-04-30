@@ -93,4 +93,18 @@ class TransactionService {
             .map((doc) => TransactionModel.fromMap(doc.data(), doc.id))
             .toList());
   }
+  // Méthode pour récupérer les 4 dernières transactions
+Stream<List<TransactionModel>> getLatestTransactions() {
+  return _db
+      .collection('users')
+      .doc('user_id_statique')
+      .collection('transactions')
+      .orderBy('date', descending: true) // Trie par date décroissante
+      .limit(4) // Limite à 4 documents
+      .snapshots()
+      .map((snapshot) => snapshot.docs
+          .map((doc) => TransactionModel.fromMap(doc.data(), doc.id))
+          .toList());
+}
+
 }

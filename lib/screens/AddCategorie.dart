@@ -20,6 +20,7 @@ class _AddCategorieState extends State<AddCategorie> {
   List<Category> _categories = [];
   String? _editingCategoryId;
 
+
   @override
   void initState() {
     super.initState();

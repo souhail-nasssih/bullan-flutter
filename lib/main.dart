@@ -1,7 +1,7 @@
-import 'package:bullan/screens/Home%20.dart';
+import 'package:bullan/firebase_options.dart';
+import 'package:bullan/screens/MainLayouts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'firebase_options.dart';
 
 Future<void> main() async {
   // Assurez-vous d'initialiser Firebase avant de lancer l'application
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const Home(),
+      home: const MainLayout(),
     );
     
   }
